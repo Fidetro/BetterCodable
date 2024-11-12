@@ -4,7 +4,7 @@ import BetterCodable
 class LosslessValueTests: XCTestCase {
     struct Fixture: Equatable, Codable {
         @LosslessValue var bool: Bool
-        @LosslessValue var string: String
+        @DefaultEmptyString var string: String
         @LosslessValue var int: Int
         @LosslessValue var double: Double
     }
