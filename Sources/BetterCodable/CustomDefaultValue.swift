@@ -14,6 +14,12 @@ public struct DefaultZeroStrategy: IntCodableStrategy {
 
 public typealias DefaultZero = DefaultCodable<DefaultZeroStrategy>
 
+public struct DefaultZeroInt32Strategy: Int32CodableStrategy {
+    public static var defaultValue: Int32 { return 0 }
+}
+
+public typealias DefaultZeroInt32 = DefaultCodable<DefaultZeroInt32Strategy>
+
 public struct DefaultZeroDoubleStrategy: DoubleCodableStrategy {
     public static var defaultValue: Double { return 0 }
 }

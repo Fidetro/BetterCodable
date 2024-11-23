@@ -8,6 +8,7 @@
 import Foundation
 
 public protocol IntCodableStrategy: DefaultCodableStrategy where DefaultValue == Int {}
+public protocol Int32CodableStrategy: DefaultCodableStrategy where DefaultValue == Int32 {}
 public protocol DoubleCodableStrategy: DefaultCodableStrategy where DefaultValue == Double {}
 public protocol FloatCodableStrategy: DefaultCodableStrategy where DefaultValue == Float {}
 
