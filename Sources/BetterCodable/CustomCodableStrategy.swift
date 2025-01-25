@@ -11,7 +11,7 @@ public protocol IntCodableStrategy: DefaultCodableStrategy where DefaultValue ==
 public protocol Int32CodableStrategy: DefaultCodableStrategy where DefaultValue == Int32 {}
 public protocol DoubleCodableStrategy: DefaultCodableStrategy where DefaultValue == Double {}
 public protocol FloatCodableStrategy: DefaultCodableStrategy where DefaultValue == Float {}
-
+public protocol DateCodableStrategy: DefaultCodableStrategy where DefaultValue == Date {}
 public extension KeyedDecodingContainer {
     func decode<P: IntCodableStrategy>(_: DefaultCodable<P>.Type, forKey key: Key) throws -> DefaultCodable<P> {
         do {

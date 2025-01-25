@@ -34,6 +34,12 @@ public struct DefaultZeroFloatStrategy: FloatCodableStrategy {
 public typealias DefaultZeroFloat = DefaultCodable<DefaultZeroFloatStrategy>
 
 
+public struct DefaultDateStrategy: DateCodableStrategy {
+    public static var defaultValue: Date { return Date() }
+}
+public typealias DefaultDate = DefaultCodable<DefaultDateStrategy>
+
+
 @propertyWrapper
 public struct Default<T: Decodable> {
     public var wrappedValue: T
@@ -82,6 +88,8 @@ public struct Default<T: Decodable> {
             return 0 as! T
         case is Bool.Type:
             return false as! T
+        case is Date.Type:
+            return Date() as! T
         default:
             fatalError("Unsupported type")
         }
