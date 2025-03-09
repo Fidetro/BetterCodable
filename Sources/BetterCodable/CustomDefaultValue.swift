@@ -40,6 +40,12 @@ public struct DefaultDateStrategy: DateCodableStrategy {
 public typealias DefaultDate = DefaultCodable<DefaultDateStrategy>
 
 
+public struct DefaultUIntStrategy: UIntCodableStrategy {
+    public static var defaultValue: UInt { return 0 }
+}
+public typealias DefaultUInt = DefaultCodable<DefaultUIntStrategy>
+
+
 @propertyWrapper
 public struct Default<T: Decodable> {
     public var wrappedValue: T
@@ -67,6 +73,11 @@ public struct Default<T: Decodable> {
                     self.wrappedValue = tmpValue as! T
                     return
                 }
+            case is UInt.Type:
+                if let tmpValue = UInt(stringValue) {
+                    self.wrappedValue = tmpValue as! T
+                    return
+                }
             default:
                 fatalError("Unsupported type")
             }
@@ -81,6 +92,8 @@ public struct Default<T: Decodable> {
     private static var defaultValue: T {
         switch T.self {
         case is Int.Type:
+            return 0 as! T
+        case is UInt.Type:
             return 0 as! T
         case is String.Type:
             return "" as! T
